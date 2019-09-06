@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>send</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+  <table border=1>
+    <thread>
+      <tr>
+        <th>아이디</th>
+        <th>이름</th>
+        <th>나이</th>
+      </tr>
+    </thread>
+    <form action="/customer/send" method="POST">
+      <tbody>
+        <!-- <% for(var i=0; i<list.length; i++) { %> -->
+        <tr>
+          <td><%= list[0].id %></td>
+          <td><%= list[0].name %></td>
+          <td><%= list[0].age %></td>
+          받는사람 :  <input type="text" name="getac" value="<%= list[i].account %>"/>
+        </tr>
+        <!-- <% } %> -->
+        보낼 금액 : <input type="number" name="pr" value="금액" />
+        <input type='submit' value="전송" />
+      </tbody>
+    </form>
+  </table>
+
+</body>
+
+</html>

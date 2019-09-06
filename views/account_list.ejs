@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        $(function(){
+            for(var i=0;i<$('.al').length;i++){
+                var ac = $('.al').eq(i).text();
+                // console.log(ac);
+                (function(i){
+                    $.get('balance_one.ajax?acad='+ac,function(b){
+                        // console.log(b.ret);
+                        $('tr').eq(i).append('<td>'+b.ret+'</td>');
+                    },'json');
+                })(i);
+            }
+        });
+    </script>
+  </head>
+  
+  <body>
+    <table border="1">
+      <% for(var i=0;i<account_list.length;i++){ %>
+          <tr id="tr_<%= i %>">
+            <td class="al"><%= account_list[i] %></td>
+          </tr>
+      <% } %>  
+    </table>
+<form action="/send_tran" method="POST">
+    <div>
+      <h3>보내는 주소</h3>
+      <select name="addr1">
+        <% for(var i=0; i<account_list.length;i++){ %>
+        <option value="<%=account_list[i] %>">
+          <%= account_list[i] %>
+        </option> 
+        <% } %>
+       </select>
+    </div>
+    <div>
+        <h3>받는 주소</h3>
+        <select name="addr2">
+          <% for(var i=0; i<account_list.length;i++){ %>
+          <option value="<%=account_list[i] %>">
+            <%= account_list[i] %>
+          </option> 
+          <% } %>
+         </select>
+      </div>
+      <div>
+        <input type="text"name="eath" placeholder="보낼금액" />
+      </div>
+      <div>
+          <input type="submit" value="보내기" />
+        </div>
+      </form>
+  </body>
+</html>

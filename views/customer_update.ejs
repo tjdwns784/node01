@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>select</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    
+    <table border="1">
+      <thead>
+          <tr>
+              <th>아이디</th>
+              <th>이름</th>
+              <th>나이</th>
+              <th>비고</th>
+            </tr>
+      </thead>
+
+      <tbody>
+      <form action="/customer/update" method="post">
+      <% for(var i=0;i<list.length;i++) { %>
+        <tr>
+          <td><input type="text" name="id" value="<%= list[i].id %>"/> </td>
+          <td><input type="text" name="na" value="<%= list[i].name %>" /></td>
+          <td><input type="text" name="ag" value="<%= list[i].age %>" /></td>
+          <td><input type="submit" value="수정" /></td>
+        </tr>
+      <% } %>  
+      </form>
+      </tbody>
+  </table>  
+  </body>
+</html>

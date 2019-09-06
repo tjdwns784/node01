@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>member_select</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <a href="/member/insert">회원등록</a>
+    <a href="/member/delete">회원삭제</a>
+    <a href="/member/update">회원수정</a>
+    <hr />
+    <table border="1">
+      <thead>
+        <tr>
+        <th>아이디</th>
+        <th>암호</th>
+        <th>이름</th>
+        <th>주소</th>
+        <th>나이</th>
+        <th>비고</th>
+      </tr>
+      </thead>
+      <tbody>
+          <% for(var i=0;i<list.length; i++) { %>
+          <tr>
+              <td><%= list[i].id %></td>
+              <td><%= list[i].password %></td>
+              <td><%= list[i].name %></td>
+              <td><%= list[i].address %></td>
+              <td><%= list[i].age %></td>
+              <td>
+                  <a href="/member/delete?id=<%= list[i].id %>">삭제</a>
+                  <a href="/member/update?id=<%= list[i].id %>">수정</a>
+                </td>
+          </tr>
+          <% } %>
+      </tbody>
+    </table>
+  </body>
+</html>

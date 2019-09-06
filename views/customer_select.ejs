@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>customer_select</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>관리자 페이지</h1>
+    <hr />
+    <a href="/customer/insert">회원등록</a>
+    <a href="/customer/delete">회원삭제</a>
+    <a href="/customer/update">회원수정</a>
+    <a href="/customer/send">회원에게 전송</a>
+    <hr />
+    <table border="1">
+      <thead>
+        <tr>
+        <th>아이디</th>
+        <th>이름</th>
+        <th>나이</th>
+        <th>CA</th>
+        <th>ACCOUNT</th>
+        <th>비고</th>
+      </tr>
+      </thead>
+      <tbody>
+          <% for(var i=0;i<list.length; i++) { %>
+          <tr class="">
+              <td><%= list[i].id %></td>
+              <td><%= list[i].name %></td>
+              <td><%= list[i].age %></td>
+              <td><%= list[i].CA %></td>
+              <td><%= list[i].account %></td>
+              <td>
+                  <a href="/customer/delete?id=<%= list[i].id %>">삭제</a>
+                  <a href="/customer/update?id=<%= list[i].id %>">수정</a>
+                  <a href="/customer/send?id=<%= list[i].id %>">전송</a>
+                </td>
+          </tr>
+          <% } %>
+      </tbody>
+    </table>
+  </body>
+</html>
